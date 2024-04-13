@@ -21,7 +21,7 @@ if [ $1 = "frpc" ] || [ $1 = "frps" ]; then
     # Remove leading "v" from version
     latest_release=$(printf "%s" "$latest_release" | sed 's/v//')
     # Download frp from GitHub
-    wget "${ghproxy}https://github.com/fatedier/frp/releases/download/v${latest_release}/frp_${latest_release}_linux_amd64.tar.gz" | tar -xz
+    wget -O - "${ghproxy}https://github.com/fatedier/frp/releases/download/v${latest_release}/frp_${latest_release}_linux_amd64.tar.gz" | tar -xz
     # Rename frp directory
     mv "frp_${latest_release}_linux_amd64" "frp"
     # Remove tar file
