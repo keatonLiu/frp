@@ -1,5 +1,7 @@
 #!/bin/sh
 
+ghproxy="https://gh-proxy.com/"
+
 # If argument is not provided, then exit
 if [ $# -eq 0 ]; then
     echo "Usage: $0 <path>"
@@ -14,13 +16,12 @@ get_latest_release() {
 
 # If argument is frpc or frps
 if [ $1 = "frpc" ] || [ $1 = "frps" ]; then
-
     # Get latest release of frp
     latest_release=$(get_latest_release "fatedier/frp")
     # Remove leading "v" from version
     latest_release=$(printf "%s" "$latest_release" | sed 's/v//')
     # Download frp from GitHub
-    wget "https://github.com/fatedier/frp/releases/download/v${latest_release}/frp_${latest_release}_linux_amd64.tar.gz" | tar -xz
+    wget "${ghproxy}https://github.com/fatedier/frp/releases/download/v${latest_release}/frp_${latest_release}_linux_amd64.tar.gz" | tar -xz
     # Rename frp directory
     mv "frp_${latest_release}_linux_amd64" "frp"
     # Remove tar file
@@ -40,7 +41,7 @@ else
 fi
 
 # Install service
-cp ${name}/${name}.service /etc/systemd/system/
+wget "${ghproxy}https://raw.githubusercontent.com/keatonLiu/frp/master/${name}/${name}.service" -O /etc/systemd/system/${name}.service
 # Reload systemd
 sudo systemctl daemon-reload
 # Enable frp service

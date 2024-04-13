@@ -11,6 +11,18 @@ Docker Image packaging for Frp.
 
 ## Usage
 
+install frpc service directly
+
+```bash
+wget -O - https://raw.githubusercontent.com/keatonLiu/frp/master/install.sh | bash -s frpc
+```
+
+install frps service directly
+
+```bash
+wget -O - https://raw.githubusercontent.com/keatonLiu/frp/master/install.sh | bash -s frps
+```
+
 start frps
 
 ```bash
