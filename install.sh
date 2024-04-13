@@ -24,8 +24,6 @@ if [ $1 = "frpc" ] || [ $1 = "frps" ]; then
     wget -O - "${ghproxy}https://github.com/fatedier/frp/releases/download/v${latest_release}/frp_${latest_release}_linux_amd64.tar.gz" | tar -xz
     # Rename frp directory
     mv "frp_${latest_release}_linux_amd64" "frp"
-    # Remove tar file
-    rm "frp_${latest_release}_linux_amd64.tar.gz"
     # Move frp to /usr/local/
     sudo mv frp /usr/local/
 else 
@@ -46,10 +44,7 @@ wget "${ghproxy}https://raw.githubusercontent.com/keatonLiu/frp/master/${name}/$
 sudo systemctl daemon-reload
 # Enable frp service
 sudo systemctl enable ${name}
-# Start frp service
-sudo systemctl start ${name}
-# Check status of frp service
-sudo systemctl status ${name}
 
 echo "Installed ${name} successfully"
 echo "Set up ${name} configuration in /usr/local/frp/${name}.toml"
+echo "Start ${name} service using 'sudo systemctl start ${name}'"
