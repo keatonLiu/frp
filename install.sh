@@ -14,8 +14,15 @@ get_latest_release() {
     sed -E 's/.*"([^"]+)".*/\1/'                                    # Pluck JSON value
 }
 
+# check uid
+if [ $(id -u) -ne 0 ]; then
+    echo "Please run as root"
+    exit 1
+fi
+
 # If argument is frpc or frps
 if [ $1 = "frpc" ] || [ $1 = "frps" ]; then
+    apt update && apt install -y wget
     # Get latest release of frp
     latest_release=$(get_latest_release "fatedier/frp")
     # Remove leading "v" from version
@@ -25,7 +32,7 @@ if [ $1 = "frpc" ] || [ $1 = "frps" ]; then
     # Rename frp directory
     mv "frp_${latest_release}_linux_amd64" "frp"
     # Move frp to /usr/local/
-    sudo mv frp /usr/local/
+    mv frp /usr/local/
 else 
     echo "Invalid argument"
     exit 1
@@ -41,9 +48,9 @@ fi
 # Install service
 wget "${ghproxy}https://raw.githubusercontent.com/keatonLiu/frp/master/${name}/${name}.service" -O /etc/systemd/system/${name}.service
 # Reload systemd
-sudo systemctl daemon-reload
+systemctl daemon-reload
 # Enable frp service
-sudo systemctl enable ${name}
+systemctl enable ${name}
 
 echo "Installed ${name} successfully"
 echo "Set up ${name} configuration in /usr/local/frp/${name}.toml"
