@@ -22,7 +22,7 @@ fi
 
 # If argument is frpc or frps
 if [ $1 = "frpc" ] || [ $1 = "frps" ]; then
-    apt update && apt install -y wget
+    apt update && apt install -y wget curl
     # Get latest release of frp
     latest_release=$(get_latest_release "fatedier/frp")
     # Remove leading "v" from version
@@ -54,4 +54,4 @@ systemctl enable ${name}
 
 echo "Installed ${name} successfully"
 echo "Set up ${name} configuration in /usr/local/frp/${name}.toml"
-echo "Start ${name} service using 'sudo systemctl start ${name}'"
+echo "Start ${name} service using 'systemctl start ${name}'"
