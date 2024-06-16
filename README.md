@@ -23,6 +23,11 @@ install frps service directly
 wget -O - https://gh-proxy.com/https://raw.githubusercontent.com/keatonLiu/frp/master/install.sh | bash -s frps
 ```
 
+### Use github proxy
+```bash
+export GH_PROXY=https://gh-proxy.com
+```
+
 start frps
 
 ```bash

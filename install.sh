@@ -1,6 +1,6 @@
 #!/bin/sh
 
-ghproxy="https://gh-proxy.com/"
+ghproxy=${GH_PROXY}
 
 # If argument is not provided, then exit
 if [ $# -eq 0 ]; then
