@@ -14,13 +14,13 @@ Docker Image packaging for Frp.
 install frpc service directly
 
 ```bash
-wget -O - https://gh-proxy.com/https://raw.githubusercontent.com/keatonLiu/frp/master/install.sh | bash -s frpc
+wget -O - https://raw.githubusercontent.com/keatonLiu/frp/master/install.sh | bash -s frpc
 ```
 
 install frps service directly
 
 ```bash
-wget -O - https://gh-proxy.com/https://raw.githubusercontent.com/keatonLiu/frp/master/install.sh | bash -s frps
+wget -O - https://raw.githubusercontent.com/keatonLiu/frp/master/install.sh | bash -s frps
 ```
 
 ### Use github proxy
