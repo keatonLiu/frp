@@ -25,7 +25,7 @@ wget -O - https://raw.githubusercontent.com/keatonLiu/frp/master/install.sh | ba
 
 ### Use github proxy
 ```bash
-export GH_PROXY=https://gh-proxy.com
+export GH_PROXY=https://gh-proxy.com/
 ```
 
 start frps
